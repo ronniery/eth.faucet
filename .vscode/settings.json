@@ -1,0 +1,10 @@
+{
+  "cSpell.enableFiletypes": [
+    "dotenv",
+    "solidity"
+  ],
+  "cSpell.words": [
+    "funder",
+    "Funders"
+  ]
+}
