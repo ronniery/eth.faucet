@@ -10,6 +10,7 @@
     "truffle:migrate": "TMP_CONFIG=/tmp/truffle-config.cjs && cp ./truffle-config.js $TMP_CONFIG && truffle migrate --config $TMP_CONFIG --reset && rm $TMP_CONFIG"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
     "@types/lodash": "^4.14.192",
     "bulma": "^0.9.4",
     "lodash": "^4.17.21",

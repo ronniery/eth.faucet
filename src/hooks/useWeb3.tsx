@@ -1,45 +1,32 @@
 import { useEffect, useState } from "react";
-import { isEqual } from "lodash";
-import { providers } from "ethers";
 
+import detectEthereumProvider from "@metamask/detect-provider";
+import { provider as Web3CoreProvider } from "web3-core";
 import Web3 from "web3";
 
-type CurrentProvider = {
-  provider: providers.Provider | null;
-  web3: providers.Web3Provider | Web3 | null;
+type Web3Provider = {
+  provider: Web3CoreProvider;
+  web3: Web3 | null;
 };
 
-const { PROD, VITE_LOCAL_GANACHE_SERVER } = import.meta.env;
-
-const useWeb3 = (): CurrentProvider => {
-  const [api, setApi] = useState<CurrentProvider>({
+const useWeb3 = (): Web3Provider => {
+  const [api, setApi] = useState<Web3Provider>({
     provider: null,
     web3: null,
   });
 
   useEffect(() => {
     const loadProvider = async () => {
-      const { ethereum, web3 } = window;
-      let provider = null;
+      const provider = await detectEthereumProvider<Web3CoreProvider>();
 
-      if (ethereum) {
-        provider = ethereum;
-
-        try {
-          await provider.enable();
-        } catch (e) {
-          console.error("User denied account access!");
-        }
-      } else if (web3) {
-        provider = web3;
-      } else if (!isEqual(PROD, "production")) {
-        provider = new Web3.providers.HttpProvider(VITE_LOCAL_GANACHE_SERVER);
+      if (provider) {
+        setApi({
+          web3: new Web3(provider),
+          provider,
+        });
+      } else {
+        console.error("Please, install Metamask!!");
       }
-
-      setApi({
-        web3: new Web3(provider),
-        provider,
-      });
     };
 
     loadProvider();
