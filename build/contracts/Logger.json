@@ -1,0 +1,148 @@
+{
+  "contractName": "Logger",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "emitLog",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"emitLog\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Logger.sol\":\"Logger\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Logger.sol\":{\"keccak256\":\"0x3b58b14558961adf0887252c870b6a9af5fdf82c08f929f49dc1797c6b199af6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ad1c3c1fef4df74404da32ca5ac5c9813a64614300be37ce77bb1fbcc7211a3\",\"dweb:/ipfs/QmPjkwU1pauX6w6J8XNws3TbRjqMJrQMviVu1t5UxZkY9F\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nabstract contract Logger {\n  // That function MUST be implemented by any other contract which inherits from `Logger` contract\n  function emitLog() public pure virtual returns(bytes32);\n}",
+  "sourcePath": "/Users/rborges/Desktop/blockchain/eth.faucet/contracts/Logger.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Logger.sol",
+    "exportedSymbols": {
+      "Logger": [
+        274
+      ]
+    },
+    "id": 275,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 268,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:3"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "Logger",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 274,
+        "linearizedBaseContracts": [
+          274
+        ],
+        "name": "Logger",
+        "nameLocation": "84:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "f42c13bf",
+            "id": 273,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "emitLog",
+            "nameLocation": "203:7:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 269,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "210:2:3"
+            },
+            "returnParameters": {
+              "id": 272,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 271,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 273,
+                  "src": "241:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 270,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "241:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "240:9:3"
+            },
+            "scope": 274,
+            "src": "194:56:3",
+            "stateMutability": "pure",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 275,
+        "src": "66:186:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:220:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.13",
+  "updatedAt": "2023-03-27T18:22:23.227Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
