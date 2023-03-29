@@ -13,7 +13,7 @@ function App() {
       if (web3Api.web3) {
         const accounts = await web3Api.web3.eth.getAccounts();
         setAccount(accounts.at(0) as string);
-         console.log(account);
+        console.log(account);
       }
     };
 
