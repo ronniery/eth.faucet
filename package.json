@@ -12,10 +12,9 @@
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
     "@metamask/providers": "^10.2.1",
-    "@truffle/contract": "^4.6.18",
-    "@types/lodash": "^4.14.192",
     "bulma": "^0.9.4",
     "lodash": "^4.17.21",
+    "patch-package": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "web3": "^1.9.0"
@@ -24,6 +23,7 @@
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
+    "@types/lodash": "^4.14.192",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "@vitejs/plugin-react-swc": "^3.2.0",

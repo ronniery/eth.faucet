@@ -4,7 +4,7 @@ import useWeb3 from "../../hooks/useWeb3";
 import "./App.css";
 
 function App() {
-  const web3Api = useWeb3();
+  const { api: web3Api, getContract } = useWeb3();
 
   const [account, setAccount] = useState<string>("");
 
@@ -13,7 +13,6 @@ function App() {
       if (web3Api.web3) {
         const accounts = await web3Api.web3.eth.getAccounts();
         setAccount(accounts.at(0) as string);
-        console.log(account);
       }
     };
 

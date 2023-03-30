@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-export interface Contract {
+export interface TruffleContract {
   contractName: string;
   abi: Abi[];
   metadata: string;
@@ -1619,10 +1619,10 @@ export interface Compiler {
 }
 
 export interface Networks {
-  "5777": N5777;
+  [key: number]: Network;
 }
 
-export interface N5777 {
+export interface Network {
   events: Events;
   links: Links;
   address: string;
