@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { isEmpty, values } from "lodash";
+import { values } from "lodash";
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { provider as Web3CoreProvider } from "web3-core";
 import { AbiItem } from "web3-utils";
-import Contract from "web3-eth";
 import Web3 from "web3";
 
-import { Network, TruffleContract } from "../types";
+import { Network, TruffleContract, ExtendedContract } from "../types";
 
 type Web3Provider = {
   provider: MetaMaskInpageProvider | null;
@@ -16,7 +15,7 @@ type Web3Provider = {
 
 type UseWeb3Hook = {
   api: Web3Provider;
-  getContract: (name: string) => Promise<Contract | null>
+  getContract: (name: string) => Promise<ExtendedContract>;
 };
 
 const useWeb3 = (): UseWeb3Hook => {
@@ -25,9 +24,9 @@ const useWeb3 = (): UseWeb3Hook => {
     web3: null,
   });
 
-  const getContract = async (name: string): Promise<Contract | null> => {
-    if (isEmpty(api.web3)) return null;
-
+  const getContract = async (
+    name: string
+  ): Promise<ExtendedContract> => {
     const { abi, address }: { abi: AbiItem[]; address: string } = await fetch(
       `/contracts/${name}.json`
     )
@@ -40,8 +39,10 @@ const useWeb3 = (): UseWeb3Hook => {
         return { abi: abi as AbiItem[], address };
       });
 
-    const activeContract = new api.web3.eth.Contract(abi, address);
-    return activeContract as unknown as Contract;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const _contract = new api.web3!.eth.Contract(abi, address) as unknown as ExtendedContract;
+    _contract.address = address;
+    return _contract;
   };
 
   useEffect(() => {

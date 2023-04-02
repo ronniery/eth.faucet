@@ -1,5 +1,7 @@
+import Contract from "web3-eth";
+
 /* eslint-disable @typescript-eslint/no-empty-interface */
-export interface TruffleContract {
+export interface TruffleContract<UserMethods = void, DevMethods = void>  {
   contractName: string;
   abi: Abi[];
   metadata: string;
@@ -18,8 +20,8 @@ export interface TruffleContract {
   schemaVersion: string;
   updatedAt: string;
   networkType: string;
-  devdoc: Devdoc;
-  userdoc: Userdoc;
+  devdoc: Devdoc<DevMethods>;
+  userdoc: Userdoc<UserMethods>;
 }
 
 export interface Abi {
@@ -1633,18 +1635,18 @@ export interface Events {}
 
 export interface Links {}
 
-export interface Devdoc {
+export interface Devdoc<DevMethods> {
   kind: string;
-  methods: Methods;
+  methods: DevMethods;
   version: number;
 }
 
-export interface Methods {}
-
-export interface Userdoc {
+export interface Userdoc<UserMethods> {
   kind: string;
-  methods: Methods2;
+  methods: UserMethods;
   version: number;
 }
 
-export interface Methods2 {}
+export type ExtendedContract = Contract & {
+  address: string;
+};
