@@ -6,7 +6,7 @@ import { provider as Web3CoreProvider } from "web3-core";
 import { AbiItem } from "web3-utils";
 import Web3 from "web3";
 
-import { Network, TruffleContract, ExtendedContract } from "../types";
+import { ExtendedContract, Network, TruffleContract } from "../types";
 
 type Web3Provider = {
   provider: MetaMaskInpageProvider | null;
@@ -40,7 +40,7 @@ const useWeb3 = (): UseWeb3Hook => {
       });
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const _contract = new api.web3!.eth.Contract(abi, address) as unknown as ExtendedContract;
+    const _contract = new api.web3!.eth.Contract(abi, address) as ExtendedContract;
     _contract.address = address;
     return _contract;
   };

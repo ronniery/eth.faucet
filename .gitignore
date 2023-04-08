@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 /public/contracts/**/*
+/src/types/**/*.ts
+!/src/types/**/index.ts

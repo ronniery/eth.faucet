@@ -1,52 +1,69 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { JSONRPCMethodsRestricted } from "../../constants";
 import useWeb3 from "../../hooks/useWeb3";
-import { TruffleContract } from "../../types";
+import { ExtendedContract } from "../../types";
 
 import "./App.css";
+import { isEmpty } from "lodash";
 
 function App() {
   const { api: web3Api, getContract } = useWeb3();
 
-  const [account, setAccount] = useState<string>("");
-  const [balance, setBalance] = useState<string>("0");
-  const [contract, setContract] = useState<TruffleContract>(
-    {} as TruffleContract
+  const [userAccount, setUserAccount] = useState<string>("");
+  const [accBalance, setAccBalance] = useState<string>("0");
+  const [onBalanceChange, setOnBalanceChange] = useState<boolean>(false);
+  const [faucetContract, setFaucetContract] = useState<ExtendedContract>(
+    {} as ExtendedContract
   );
 
   useEffect(() => {
     const getAccounts = async () => {
-      const { web3 } = web3Api;
+      if (web3Api.web3 === null) return;
 
-      if (web3) {
-        const { eth, utils } = web3;
-        const accounts = await eth.getAccounts();
-        const _contract = await getContract("Faucet");
-        const _balance = await eth.getBalance(_contract.address);
+      const { eth } = web3Api.web3;
+      const accounts = await eth.getAccounts();
 
-        setAccount(accounts.at(0) as string);
-        setContract(_contract as FaucetContract);
-        setBalance(utils.fromWei(_balance, "ether"));
-      }
+      setUserAccount(accounts.at(0) as string);
     };
 
     getAccounts();
   }, [web3Api.web3]);
 
-  const addFunds = async () => {
+  useEffect(() => {
+    const loadBalance = async () => {
+      if (web3Api.web3 === null) return;
+
+      const { eth, utils } = web3Api.web3;
+
+      const _contract = await getContract("Faucet");
+      const _balance = await eth.getBalance(_contract.address);
+
+      setFaucetContract(_contract);
+      setAccBalance(utils.fromWei(_balance, "ether"));
+    };
+
+    loadBalance();
+  }, [web3Api.web3, onBalanceChange]);
+
+  const addFunds = useCallback(async () => {
     const { web3 } = web3Api;
 
-    await contract.addFunds({
-      from: account,
+    // If you want to trigger an execution, you must use `.send` method after contract method call
+    await faucetContract.methods.addFunds().send({
+      from: userAccount,
       value: web3!.utils.toWei(String(1), "ether"),
     });
-  };
+
+    setOnBalanceChange(!onBalanceChange);
+  }, [web3Api, faucetContract]);
 
   const connectWallet = () =>
     web3Api.provider?.request<string[]>({
       method: JSONRPCMethodsRestricted.ETH_REQUEST_ACCOUNTS,
     });
+
+  const isAccountSelected = () => !isEmpty(userAccount);
 
   return (
     <div className="faucet-wrapper">
@@ -56,20 +73,25 @@ function App() {
             <strong> Account: </strong>
           </span>
 
-          {account ? (
-            <h1>{account}</h1>
+          {isAccountSelected() ? (
+            <h1>{userAccount}</h1>
           ) : (
             <button className="button" onClick={connectWallet}>
               Connect Wallet
             </button>
           )}
         </div>
-        <div className="balance-view is-size-2 mb-3">
-          Current Balance: <strong>{balance}</strong> ETH
-        </div>
-        {account && (
+        {isAccountSelected() ? (
+          <div className="balance-view is-size-2 mb-3">
+            Current Balance: <strong>{accBalance}</strong> ETH
+          </div>
+        ) : null}
+        {userAccount && (
           <>
-            <button onClick={addFunds} className="button is-outlined mr-2"> Donate </button>
+            <button onClick={addFunds} className="button is-outlined mr-2">
+              {" "}
+              Donate{" "}
+            </button>
             <button className="button is-outlined"> Withdraw </button>
           </>
         )}
