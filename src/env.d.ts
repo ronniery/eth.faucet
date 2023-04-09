@@ -12,3 +12,7 @@ declare module '@truffle/contract' {
 
   export const contract: (json: string) => Contract
 }
+
+declare module '@depay/web3-mock' {
+  export default web3Mock
+}

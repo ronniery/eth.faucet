@@ -15,6 +15,7 @@ import {
 
 type UseWeb3Hook = {
   api: Web3Provider;
+  error?: Error;
   getContract: (name: string) => Promise<ExtendedContract>;
 };
 
