@@ -15,11 +15,11 @@ const UserControls = ({
     <>
       <button onClick={addFunds} className="button is-outlined mr-2">
         {" "}
-        Donate{" "}
+        Donate 1 eth{" "}
       </button>
       <button onClick={withdrawFunds} className="button is-outlined">
         {" "}
-        Withdraw{" "}
+        Withdraw 0.1 eth{" "}
       </button>
     </>
   );
