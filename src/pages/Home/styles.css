@@ -1,0 +1,19 @@
+.faucet-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-address {
+  border-radius: 8px;
+  background-color: rgb(74, 74, 74);
+  padding: 2px 6px;
+  font-weight: 300;
+  color: white;
+}
+
+.notification-steps li::marker {
+  content: '- ';
+  font-size: 1.2em;
+}

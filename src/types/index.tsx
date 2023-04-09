@@ -1,3 +1,5 @@
+import { MetaMaskInpageProvider } from "@metamask/providers";
+import Web3 from "web3";
 import { Contract as Web3EthContract } from "web3-eth-contract";
 
 /* eslint-disable @typescript-eslint/no-empty-interface */
@@ -1649,4 +1651,10 @@ export interface Userdoc {
 
 export type ExtendedContract = Web3EthContract & {
   address: string;
+};
+
+export type Web3Provider = {
+  provider: MetaMaskInpageProvider | null;
+  web3: Web3 | null;
+  error: Error | null;
 };
