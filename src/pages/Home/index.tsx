@@ -3,9 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import { isEmpty } from "lodash";
 
-import { JSONRPCMethodsRestricted } from "../../constants";
-import { ExtendedContract } from "../../types";
-import useWeb3 from "../../hooks/useWeb3";
+import { JSONRPCMethodsRestricted } from "@constants";
+import { ExtendedContract } from "@types";
+import useWeb3 from "@hooks/useWeb3";
 
 import {
   UserAccount,
@@ -13,7 +13,7 @@ import {
   UserBalance,
   Loading,
   Notification,
-} from "../../components";
+} from "@components";
 
 import "./styles.css";
 

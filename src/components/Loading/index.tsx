@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loading = (): JSX.Element => {
   return (
     <div className="is-flex is-flex-direction-column is-is-justify-content-center">
       <img src="/loader.gif" />

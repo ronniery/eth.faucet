@@ -2,7 +2,38 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@components": [
+        "components/index.tsx"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@types/*": [
+        "types/*"
+      ],
+      "@types": [
+        "types/index.tsx"
+      ],
+      "@constants": [
+        "constants.tsx"
+      ],
+      "@main": [
+        "main.tsx"
+      ]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,8 +46,21 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["src/vite-env.d.ts"]
+    "typeRoots": [
+      "src/vite-env.d.ts"
+    ]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "plugins": [
+    {
+      "transform": "typescript-transform-paths"
+    }
+  ]
 }

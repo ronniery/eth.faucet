@@ -6,7 +6,12 @@ import { provider as Web3CoreProvider } from "web3-core";
 import { AbiItem } from "web3-utils";
 import Web3 from "web3";
 
-import { ExtendedContract, Network, TruffleContract, Web3Provider } from "../types";
+import {
+  ExtendedContract,
+  Network,
+  TruffleContract,
+  Web3Provider,
+} from "types";
 
 type UseWeb3Hook = {
   api: Web3Provider;

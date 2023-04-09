@@ -1,5 +1,5 @@
 import { toUpper } from "lodash";
-import { Web3Provider } from "../../types";
+import { Web3Provider } from "@types";
 
 export interface IUserAccountProps {
   isAccountSelected: () => boolean;

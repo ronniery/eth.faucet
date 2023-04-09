@@ -7,16 +7,22 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "prepare": "ts-patch install -s",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "yarn run typecheck && yarn run eslint src/ --ext .js,.jsx,.ts,.tsx",
     "abi:gen-interface": "for file in public/**/*.json; do npx abi-types-generator $file --output=src/types/ --provider=web3; done",
     "truffle:migrate": "TMP_CONFIG=/tmp/truffle-config.cjs && cp ./truffle-config.js $TMP_CONFIG && truffle migrate --config $TMP_CONFIG --reset && rm $TMP_CONFIG && yarn run abi:gen-interface"
   },
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
     "@metamask/providers": "^10.2.1",
+    "@types/jest": "^29.5.0",
     "bulma": "^0.9.4",
+    "jest": "^29.5.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "ts-jest": "^29.1.0",
     "web3": "^1.9.0",
     "web3-eth-contract": "^1.9.0"
   },
@@ -35,7 +41,9 @@
     "ganache": "^7.7.7",
     "prettier": "^2.8.7",
     "truffle": "^5.8.1",
+    "ts-patch": "^2.1.0",
     "typescript": "^5.0.3",
+    "typescript-transform-paths": "^3.4.6",
     "vite": "^4.2.1"
   }
 }
