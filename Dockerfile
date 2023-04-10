@@ -37,4 +37,4 @@ RUN yarn global add serve
 EXPOSE 6002
 
 # Set entry point
-CMD ["serve", "/app/dist/", "-p", "6002"]
+CMD ["serve", ".", "-p", "6002"]

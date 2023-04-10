@@ -91,10 +91,11 @@ function App() {
     try {
       const { web3, provider } = web3Api;
       const accounts = await web3.eth.getAccounts();
-      const currentChain = await web3.eth.net.getId();
+      const currentChain = await web3.eth.getChainId();
 
       onAccountChanged(provider);
       onNetworkChanged(provider);
+      
       setUserAccount(accounts.at(0) as string);
       setIsGanacheSelected(currentChain === GANACHE_NETWORK_ID);
     } finally {

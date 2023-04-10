@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  web:
+    container_name: chain-client
+    build: .
+    ports:
+      - "6002:6002"
+    networks:
+      - chain-network
+  ganache:
+    image: trufflesuite/ganache-cli
+    container_name: chain-server
+    platform: linux/amd64
+    ports:
+      - "8545:8545"
+    command: --accounts 10 --account_keys_path ../chain/accounts.json
+    environment:
+      detach: true
+      publish: true
+    volumes:
+      - private-keys:/chain
+    networks:
+      - chain-network
+  accounts:
+    container_name: chain-accounts
+    image: halverneus/static-file-server
+    platform: linux/amd64
+    environment:
+      - FOLDER=/chain
+    ports:
+      - "6003:8080"
+    volumes:
+      - private-keys:/chain
+
+volumes:
+  private-keys:
+
+networks:
+  chain-network:
