@@ -1,5 +1,5 @@
-import { MetaMaskInpageProvider } from "@metamask/providers";
 import Web3 from "web3";
+import { MetaMaskInpageProvider } from "@metamask/providers";
 import { Contract as Web3EthContract } from "web3-eth-contract";
 
 /* eslint-disable @typescript-eslint/no-empty-interface */
