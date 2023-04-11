@@ -1,5 +1,5 @@
 # First stage, build
-FROM --platform=arm64 node:19.7.0-alpine as build-stage0
+FROM node:19.7.0-alpine as build-stage0
 
 # Set the workdir
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN yarn install
 RUN yarn run vite build
 
 # Start the main image stage
-FROM --platform=arm64 node:19.7.0-alpine as main
+FROM node:19.7.0-alpine as main
 
 # Define in the next stage the workdir
 WORKDIR /app
