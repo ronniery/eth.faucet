@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Warn user about meta mask
-printf "%b" "\033[0;31m You must install Metamask to use that application https://metamask.io/download/\e[0m"
+printf "%b" "\033[0;31m You must install Metamask to use that application https://metamask.io/download/\e[0m\n"
 
 # Working directory
 workdir="/tmp/ronniery"
@@ -13,7 +13,7 @@ rm -rf "$workdir" > /dev/null 2>&1
 mkdir -p "$workdir"
 
 # Clone the project locally
-git clone https://github.com/ronniery/eth.faucet.git $workdir
+git clone https://github.com/ronniery/eth.faucet.git --quiet $workdir &> /dev/null
 
 # Go to inside the cloned project
 cd "$workdir"
