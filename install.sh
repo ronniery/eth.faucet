@@ -1,6 +1,7 @@
 #!/bin/bash
 
-GREEN="\x1B[32m"
+# Warn user about meta mask
+printf "%b" "\033[0;31m You must install Metamask to use that application https://metamask.io/download/\e[0m"
 
 # Working directory
 workdir="/tmp/ronniery"
