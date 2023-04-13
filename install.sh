@@ -32,7 +32,7 @@ cd "$workdir"
 printf "%b" "$YELLOW → Building docker images with compose...$NO_COLOR\n"
 
 # Make the docker compose build all necessary stuff
-docker compose up -d
+docker compose up -d --log-level INFO
 
 # Waiting some seconds before next step
 printf "Waiting 5 seconds, before install truffle and start to deploy contracts...\n"
@@ -40,6 +40,9 @@ sleep 5
 
 # Install truffle and migrate contracts
 printf "%b" "$YELLOW → Installing truffle on your system...$NO_COLOR\n"
+
+# Disable update notification
+npm config set update-notifier false
 
 # Installing npm package, truffle
 npm install --silent truffle
