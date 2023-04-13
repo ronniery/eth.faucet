@@ -1,2 +1,4 @@
 src/types/**/*.ts
 !src/types/index.ts
+
+config/server/ganache/**/*.js

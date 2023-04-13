@@ -2,15 +2,20 @@ version: "3.9"
 services:
   web:
     container_name: chain-client
-    build: .
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: client.Dockerfile
     ports:
       - "6002:6002"
     networks:
       - chain-network
   ganache:
-    image: trufflesuite/ganache-cli
     container_name: chain-server
-    platform: linux/amd64
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: server.Dockerfile
     ports:
       - "8545:8545"
     command: --accounts 10 --account_keys_path ../chain/accounts.json
@@ -24,7 +29,7 @@ services:
   accounts:
     container_name: chain-accounts
     image: halverneus/static-file-server
-    platform: linux/amd64
+    restart: on-failure
     environment:
       - FOLDER=/chain
     ports:

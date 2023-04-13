@@ -26,6 +26,7 @@ sleep 5
 
 # Install truffle and migrate contracts
 npm install truffle
+npx truffle compile
 npx truffle migrate
 
 # Cleaning stuff
