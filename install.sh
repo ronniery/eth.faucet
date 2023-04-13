@@ -32,7 +32,7 @@ cd "$workdir"
 printf "%b" "$YELLOW → Building docker images with compose...$NO_COLOR\n"
 
 # Make the docker compose build all necessary stuff
-docker compose up -d --log-level INFO
+docker compose up -d
 
 # Waiting some seconds before next step
 printf "Waiting 5 seconds, before install truffle and start to deploy contracts...\n"
