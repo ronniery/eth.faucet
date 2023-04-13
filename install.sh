@@ -19,7 +19,7 @@ git clone https://github.com/ronniery/eth.faucet.git --quiet $workdir &> /dev/nu
 cd "$workdir"
 
 # Make the docker composer build all necessary stuff
-docker compose up
+docker compose up -d
 
 # Waiting some seconds before next step
 printf "Waiting 5 seconds, before install truffle and start to deploy contracts...\n"
