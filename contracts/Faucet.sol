@@ -14,7 +14,7 @@ contract Faucet is Owned, Logger, IFaucet {
 
   modifier limitWithdraw(uint withdrawAmount) {
     require(
-      withdrawAmount <= 1000000000000000000,
+      withdrawAmount <= 100000000000000000,
       "Cannot withdraw more than 0.1 ether"
     );
 
@@ -38,8 +38,6 @@ contract Faucet is Owned, Logger, IFaucet {
   }
 
   function withdraw(uint withdrawAmount) override external limitWithdraw(withdrawAmount) {
-    // require(withdrawAmount <= 100000000000000000, "Cannot withdraw more than 0.1 ether");
-
     payable(msg.sender).transfer(withdrawAmount);
   }
 

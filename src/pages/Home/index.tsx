@@ -43,7 +43,7 @@ function App() {
 
   const withdrawFunds = useCallback(async () => {
     const { web3 } = web3Api;
-    console.log(web3);
+
     const withdrawAmount = web3!.utils.toWei(String(0.1), "ether");
 
     await faucetContract.methods.withdraw(withdrawAmount).send({
@@ -95,7 +95,7 @@ function App() {
 
       onAccountChanged(provider);
       onNetworkChanged(provider);
-      
+
       setUserAccount(accounts.at(0) as string);
       setIsGanacheSelected(currentChain === GANACHE_NETWORK_ID);
     } finally {
@@ -158,8 +158,8 @@ function App() {
                       </a>
                     </li>
                     <li>
-                      Or use the Metamask website to find other ways to
-                      install it:{" "}
+                      Or use the Metamask website to find other ways to install
+                      it:{" "}
                       <a
                         rel="noopener noreferrer"
                         target="_blank"
