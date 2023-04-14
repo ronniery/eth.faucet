@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "yarn run typecheck && yarn run eslint src/ --ext .js,.jsx,.ts,.tsx",
     "abi:gen-interface": "for file in public/**/*.json; do npx abi-types-generator $file --output=src/types/ --provider=web3; done",
-    "truffle:compile": "rm -r public/contracts && truffle compile",
+    "truffle:compile": "(rm -r public/contracts || true) && truffle compile",
     "truffle:migrate": "TMP_CONFIG=/tmp/truffle-config.cjs && cp ./truffle-config.js $TMP_CONFIG && truffle migrate --config $TMP_CONFIG --reset && rm $TMP_CONFIG && yarn run abi:gen-interface",
     "truffle:publish": "npm run truffle:compile && npm run truffle:migrate",
     "test": "jest"
