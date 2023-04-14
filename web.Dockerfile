@@ -7,7 +7,7 @@ WORKDIR /app
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk update && apk upgrade && apk add --update alpine-sdk && \
-    apk add --no-cache bash git openssh make cmake python3 && \
+    apk add --no-cache bash curl git openssh make cmake python3 && \
     ln -sf python3 /usr/bin/python
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
@@ -19,7 +19,7 @@ COPY src/ ./src/
 
 # Install all packages and build the project
 RUN yarn install
-RUN yarn run vite build
+RUN yarn run build
 
 # Start the main image stage
 FROM node:19.7.0-alpine as main
@@ -36,5 +36,5 @@ RUN yarn global add serve
 # Expose the current port
 EXPOSE 6002
 
-# Set entry point
+# Define the starter point
 CMD ["serve", ".", "-p", "6002"]

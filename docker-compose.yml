@@ -1,21 +1,36 @@
 version: "3.9"
 services:
   web:
-    container_name: chain-client
+    container_name: chain-web
     restart: on-failure
+    healthcheck:
+      test: curl -f http://localhost:6002
+      interval: 15s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
     build:
       context: .
-      dockerfile: client.Dockerfile
+      dockerfile: web.Dockerfile
     ports:
       - "6002:6002"
-    networks:
-      - chain-network
+    volumes:
+      - chain-volume:/chain
+    depends_on:
+      ganache:
+        condition: service_healthy
   ganache:
-    container_name: chain-server
+    container_name: chain-ganache
     restart: on-failure
     build:
       context: .
-      dockerfile: server.Dockerfile
+      dockerfile: ganache.Dockerfile
+    healthcheck:
+      test: curl -sf -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545
+      interval: 5s
+      timeout: 30s
+      retries: 9
+      start_period: 10s
     ports:
       - "8545:8545"
     command: --accounts 10 --account_keys_path ../chain/accounts.json
@@ -23,22 +38,23 @@ services:
       detach: true
       publish: true
     volumes:
-      - private-keys:/chain
-    networks:
-      - chain-network
+      - chain-volume:/chain
   accounts:
     container_name: chain-accounts
     image: halverneus/static-file-server
+    healthcheck:
+      test: curl -f http://localhost:6003/accounts.json
+      interval: 15s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
     restart: on-failure
     environment:
       - FOLDER=/chain
     ports:
       - "6003:8080"
     volumes:
-      - private-keys:/chain
+      - chain-volume:/chain
 
 volumes:
-  private-keys:
-
-networks:
-  chain-network:
+  chain-volume:

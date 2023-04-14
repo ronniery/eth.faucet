@@ -24,7 +24,7 @@ const useWeb3 = (): UseWeb3Hook => {
 
   const getContract = async (name: string): Promise<ExtendedContract> => {
     const { abi, address }: { abi: AbiItem[]; address: string } = await fetch(
-      `/contracts/${name}.json`
+      `${name}.json`
     )
       .then((response) => response.json())
       .then((contract: TruffleContract) => {

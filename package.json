@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && mv dist/contracts/* dist/ && rmdir dist/contracts",
     "preview": "vite preview",
     "prepare": "ts-patch install -s",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -27,9 +27,9 @@
     "web3-eth-contract": "^1.9.0"
   },
   "devDependencies": {
-    "@depay/web3-mock": "^14.0.0",
+    "@depay/web3-mock": "^14.0.1",
     "@testing-library/react": "^14.0.0",
-    "@types/lodash": "^4.14.192",
+    "@types/lodash": "^4.14.194",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",

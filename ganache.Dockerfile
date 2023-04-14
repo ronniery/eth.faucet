@@ -21,8 +21,15 @@ FROM trufflesuite/ganache
 # Set the workdir
 WORKDIR /app
 
+# Install curl, to let the healthcheck work
+RUN apt-get update && \
+    apt-get install curl -y
+
 # Copy the necessary files
 COPY --from=build-stage0 /app/eth.faucet/public/contracts ./public/contracts
+
+# Make the built contracts available for the web client inside the /chain volume
+COPY --from=build-stage0 /app/eth.faucet/public/contracts ../chain/contracts
 COPY --from=build-stage0 /app/eth.faucet/migrations ./migrations
 COPY --from=build-stage0 /app/eth.faucet/truffle-config.js /app/eth.faucet/package.json ./
 

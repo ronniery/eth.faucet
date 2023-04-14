@@ -431,10 +431,10 @@
   resolved "https://registry.yarnpkg.com/@depay/web3-blockchains/-/web3-blockchains-7.1.0.tgz#101c4d36e263f5d703e1604899b3b17fdd084bbb"
   integrity sha512-/ZhT+c5Z58SCpo9aU7Z2mDGQxMc2Ia2BM8RKt/V337I9fYNp7zRdiYX8U+hnN4BvB9S0yu3l8vRgKwEAU1fhuA==
 
-"@depay/web3-mock@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@depay/web3-mock/-/web3-mock-14.0.0.tgz#b2aa490f20ae248f8e1777ccb0891a9aacc22926"
-  integrity sha512-sWZEGcRya1KHbCr8ZVH+WohWiC1TmtzXfDvOf1t9zfqtkKi/EAX8Tw5jw/rcksZl7NXho2N/WEwDb7G8+KRvYg==
+"@depay/web3-mock@^14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@depay/web3-mock/-/web3-mock-14.0.1.tgz#1e199ab448ef2076c8f9623a4a75c5c802dcb8ad"
+  integrity sha512-8ZHsDQLWBoKUyDK1lEJ8cl4I4FjHpNt6cQmT3YeXEbwVI1zQ06RUnwPuqTNnxUfpiMVsW4JTV89DdIpQH3Zaxg==
   dependencies:
     "@depay/solana-web3.js" "^1.21.2"
     "@depay/web3-blockchains" "^7.1.0"
@@ -2038,10 +2038,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@^4.14.192":
-  version "4.14.192"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.192.tgz#5790406361a2852d332d41635d927f1600811285"
-  integrity sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==
+"@types/lodash@^4.14.194":
+  version "4.14.194"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.194.tgz#b71eb6f7a0ff11bff59fc987134a093029258a76"
+  integrity sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==
 
 "@types/long@^4.0.0":
   version "4.0.2"

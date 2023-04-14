@@ -9,7 +9,7 @@ Blockchain & Web3 is my passion; for me, this is an incredible new thing, which 
 
 ### How do I run it?
 
-It is effortless. You only need to run this command below:
+It is effortless. You only need to run the following command below:
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/ronniery/eth.faucet/master/install.sh | bash
