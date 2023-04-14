@@ -12,7 +12,7 @@ Blockchain & Web3 is my passion; for me, this is an incredible new thing, which 
 It is effortless. You only need to run this command below:
 
 ```bash
-wget -qO- [https://raw.githubusercontent.com/ronniery/eth.faucet/master/install.sh](https://raw.githubusercontent.com/ronniery/eth.faucet/master/install.sh) | bash
+wget -qO- https://raw.githubusercontent.com/ronniery/eth.faucet/master/install.sh | bash
 ```
 
 After running the previous command, [install Metamask extension](https://metamask.io/download/) on your browser, then go to [Metamask accounts URL](http://localhost:6003/accounts.json) and load some accounts to use inside the web client.
