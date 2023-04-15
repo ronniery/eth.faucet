@@ -5,6 +5,9 @@ Blockchain & Web3 is my passion; for me, this is an incredible new thing, which 
 ### Application requirements
 
 1. [Metamask](https://metamask.io/download/) - Install it inside your browser
+  - If you're entirely unfamiliar with Metamask, here is a useful resource from YouTube: [<img src="https://i.ytimg.com/vi/cn8gKxUSquo/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=cn8gKxUSquo "How to Install Metamask Wallet in Chrome | Metamask Wallet")
+  - The next step after installing it is to connect the Metamask with the local Ganache blockchain. Here is another video from Youtube:
+[<img src="https://i.ytimg.com/vi/jLFXONkA4KM/maxresdefault.jpg" width="50%"></div>](https://www.youtube.com/watch?v=jLFXONkA4KM "Connect Metamask to Ganache (localhost) for web3")
 2. [Docker](https://docs.docker.com/get-docker/)
 
 ### How do I run it?
