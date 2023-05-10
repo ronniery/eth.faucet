@@ -14,16 +14,22 @@ RUN pip3 install --no-cache --upgrade pip setuptools && \
     git clone https://github.com/ronniery/eth.faucet.git && \
     cd eth.faucet && \
     npm install -g truffle && \
-    npx truffle compile
+    npx truffle compile --config truffle-config.js
 
-FROM trufflesuite/ganache
+FROM trufflesuite/ganache:v7.8.0
 
 # Set the workdir
 WORKDIR /app
 
+# Update stretch repositories
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list
+RUN sed -i '/stretch-updates/d' /etc/apt/sources.list
+
 # Install curl, to let the healthcheck work
 RUN apt-get update && \
-    apt-get install curl -y
+    apt-get install libcurl4-openssl-dev -y && \
+    apt-get install -f curl -y
 
 # Copy the necessary files
 COPY --from=build-stage0 /app/eth.faucet/public/contracts ./public/contracts
