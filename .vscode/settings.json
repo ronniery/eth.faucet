@@ -9,5 +9,28 @@
     "funder",
     "Funders",
     "typecheck"
-  ]
+  ],
+  "files.encoding": "utf8",
+  "files.autoSave": "afterDelay",
+  "files.enableTrash": true,
+  "files.refactoring.autoSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    ".editorconfig": true,
+    ".eslintignore": true,
+    ".eslintrc.json": true,
+    ".gitignore": true,
+    ".tool-versions": true,
+    "jest.config.ts": true,
+    "README.md": true,
+    "yarn.lock": true,
+    "node_modules": true,
+    "build": true,
+    "src/**.d.ts": true
+  }
 }
